@@ -37,10 +37,10 @@ int main() {
 		int j = 0; //keeps count of fights
 
 		//introduction, setting number of trooops
-		cout << "how many filthy blocks of meat do you want to pick, king\n";
+		cout << "how many Humans do you want to pick, king\n";
 		cin >> numOfHumans;
 
-		cout << "how many dissapointing assortment of bones do you want in opposing team, king\n";
+		cout << "how many Skeletons do you want in opposing team, king\n";
 		cin >> numOfSkeletons;
 
 		//filling the vectors 
@@ -75,35 +75,37 @@ int main() {
 				if (diceRoll > hPlayer.luckfactor) {
 					//human attacks skeleton
 					sPlayer.health = sPlayer.health - hPlayer.damage;
-					cout << "filthy piece of meat did " << hPlayer.damage << " damage to Mr.Sticks\n";
+					cout << "Mr.Human did " << hPlayer.damage << " damage to Mr.Sticks\n";
 				}
 
 				if (sPlayer.luckfactor < diceRoll) {
 					//skeleton attacks human
 					hPlayer.health = hPlayer.health - sPlayer.damage;
-					cout << "Mr.Sticks " << sPlayer.damage << " damage to filthy piece of meat\n";
+					cout << "Mr.Sticks " << sPlayer.damage << " damage to Mr.Human\n";
 				}
 
 				if(diceRoll < hPlayer.luckfactor && diceRoll < sPlayer.luckfactor) {
 					//nobody was able to attack
-					cout << " you god damn dissapointments, Can you not even hit each other, are you in love? do you wanna fuck each other? fucking fight already!\n";
+					cout << "Nobody landed a hit\n";
 				}
 			}
 
 			if (sPlayer.health <= 0) {
 				//human won
-				cout << " Professional retarded piece of meat suprisingly won !\n";
+				cout << "Mr.Human won !\n";
 
-				//shifitng each elemnt back be one and eliminating the last element
+				//shifitng each elemnt back by one and eliminating the last element
 				for (int l = 0; l < skeletonArmy.size() - 1; l++)
 				{
 					skeletonArmy[l] = skeletonArmy[l + 1];
 				}
 				skeletonArmy.pop_back();
+
+
 			}
 			else if (hPlayer.health <= 0) {
 				//skeleton won
-				cout << " dissapointing assortment of bones has suprisingly beaten filthy bag of meat, making Mr.Sticks a bit less dissapointing\n";
+				cout << "Mr.Sticks has beaten Mr.Human\n";
 
 				//shifitng each elemnt back be one and eliminating the last element
 				for (int k = 0; k < humanArmy.size() - 1; k++)
@@ -125,16 +127,15 @@ int main() {
 		cout << "***              Battle Over !!              ***\n\n";
 
 		if (skeletonArmy.size() == 0) {
-			cout << "***              the retarded pieces of meat HAVE WON !!!              ***\n";
-			cout << "Number of Professional retards left : " << humanArmy.size() << endl;
+			cout << "***              humans HAVE WON !!!              ***\n";
+			cout << "Number of Humans left : " << humanArmy.size() << endl;
 		}
 		else {
-			cout << "***              the dissapointing assortemnt of bones have won!!!              ***\n";
-			cout << "number of Hardy dildoes left: " << skeletonArmy.size() << endl;
+			cout << "***              the skeletons have won!!!              ***\n";
+			cout << "number of Skeletons left: " << skeletonArmy.size() << endl;
 		}
 
-		cout << "wanna run away from the battlefield and cry in your bed you pathetic loser of a king ?\n";
-		cout << " yes i am fucking loser = 1, nope, this man's gonna some more blood to quench his thirst = 0\n";
+		cout << "Please input 1 or true to leave, and 0 or false to simulate another battle";
 		cin >> leave;
 
 		if (!leave) {
